@@ -1,0 +1,54 @@
+const express = require('express');
+const mongoose = require('mongoose');
+
+const app = express();
+const port = 3000;
+
+// Подключение к MongoDB (предварительно запустите MongoDB на вашем компьютере)
+mongoose.connect('mongodb://localhost:27017/mydatabase', { useNewUrlParser: true, useUnifiedTopology: true });
+
+// Создание схемы для данных
+const userSchema = new mongoose.Schema({
+    name: String,
+    email: String
+});
+
+// Создание модели на основе схемы
+const User = mongoose.model('User', userSchema);
+
+// Маршрут для создания нового пользователя
+app.get('/create-user', (req, res) => {
+    // Создаем нового пользователя
+    const newUser = new User({
+        name: 'John Doe',
+        email: 'john@example.com'
+    });
+
+    // Сохраняем пользователя в базе данных
+    newUser.save((err) => {
+        if (err) {
+            console.log(err);
+            res.send('Ошибка при создании пользователя');
+        } else {
+            res.send('Пользователь успешно создан');
+        }
+    });
+});
+
+// Маршрут для получения всех пользователей
+app.get('/get-users', (req, res) => {
+    // Находим всех пользователей в базе данных
+    User.find({}, (err, users) => {
+        if (err) {
+            console.log(err);
+            res.send('Ошибка при получении пользователей');
+        } else {
+            res.json(users);
+        }
+    });
+});
+
+// Слушаем порт 3000
+app.listen(port, () => {
+    console.log(`Сервер запущен на http://localhost:${port}`);
+});
