@@ -16,11 +16,6 @@ const userSchema = new mongoose.Schema({
 // Создание модели на основе схемы
 const User = mongoose.model('User', userSchema);
 
-// Маршрут для создания нового пользователя
-app.get('/create-user', (req, res) => {
-    // Создаем нового пользователя
-    const newUser = new User({
-        name: 'John Doe',
         email: 'john@example.com'
     });
 
