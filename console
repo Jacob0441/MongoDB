@@ -14,13 +14,6 @@ d
         }
     });
 });
-
-// Маршрут для получения всех пользователей
-app.get('/get-users', (req, res) => {
-    // Находим всех пользователей в базе данных
-    User.find({}, (err, users) => {
-        if (err) {
-            console.log(err);
             res.send('Ошибка при получении пользователей');
         } else {
             res.json(users);
