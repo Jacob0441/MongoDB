@@ -4,19 +4,6 @@ d
         email: 'john@example.com'
     });
 
-    // Сохраняем пользователя в базе 
-            res.send('Пользователь успешно создан');
-        }
-    });
-});
-            res.send('Ошибка при получении пользователей');
-        } else {
-            res.json(users);
-        }
-    });
-});
-
-// Слушаем порт 3000
 app.listen(port, () => {
     console.log(`Сервер запущен на http://localhost:${port}`);
 });
