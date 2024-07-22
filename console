@@ -7,3 +7,21 @@ d
 app.listen(port, () => {
     console.log(`Сервер запущен на http://localhost:${port}`);
 });
+const express = require('express');
+const mongoose = require('mongoose');
+d
+        email: 'john@example.com'
+    });
+
+app.listen(port, () => {
+    console.log(`Сервер запущен на http://localhost:${port}`);
+});
+const express = require('express');
+const mongoose = require('mongoose');
+d
+        email: 'john@example.com'
+    });
+
+app.listen(port, () => {
+    console.log(`Сервер запущен на http://localhost:${port}`);
+});
